@@ -1,0 +1,273 @@
+<html>
+    <head>
+        <title>Registration Form</title>
+    </head>
+    <style>
+        table {
+            background-color: grey;
+        }
+        td {
+            column-span:2;
+        }
+        hr {
+            width: 100%;
+        }
+    </style>
+    <body>
+        <form method="post" name="form" onsubmit="return validateform()">
+           <font color="red"><marquee><h2 style="background-color: yellow;">WELCOME TO FRESHERS WORLD!!!</h2></marquee></font>
+            <table border="1" cellspacing="3" cellpadding="2" align="center" >
+                <tr>
+                    <th colspan="3">REGISTRATION FORM</th>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>
+                        <input type="text" name="name">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Age</th>
+                    <td>
+                        <select>
+                            <option>Select Age</option>
+                            <option value="1">10-20</option>
+                            <option value="2">21 above</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Password</th>
+                    <td>
+                        <input type="password" name="pass">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Re-password</th>
+                    <td>
+                        <input type="password" name="re_pass">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Select your security questions</th>
+                    <td>
+                        <table border="1" style="border-bottom: 0px;border-top: 0px; border-left: 0px; border-right: 0px;">
+                            <tr>
+                                <td>
+                                    <input type="radio" name="sq" value="q1">What is your first name
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="radio" name="sq" value="q2">Who is your best friend
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="radio" name="sq" value="q3">Who is your favorite color
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="radio" name="sq" value="q4">Who is your favorite teacher
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Answer of security question</th>
+                    <td>
+                        <input type="text" name="sqa">
+                    </td>
+                </tr>
+                <tr>
+                    <th>E-mail ID</th>
+                    <td>
+                        <input type="email" name="email">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Languages Known</th>
+                    <td>
+                        <input type="checkbox" name="lang" value="malayalam"> Malayalam
+                        <input type="checkbox" name="lang" value="english"> English
+                        <input type="checkbox" name="lang" value="hindi"> Hindi
+                    </td>
+                </tr>
+                <tr>
+                    <th>Phone Number</th>
+                    <td>
+                        <table border="1" style="border-bottom: 0px;border-top: 0px; border-left: 0px; border-right: 0px;">
+                            <tr>
+                                <td>Home</td>
+                                <td>Office</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="tel" name="home" maxlength="10">
+                                </td>
+                                <td>
+                                    <input type="tel" name="office" maxlength="10">
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>
+                        <table border="1" style="border-bottom: 0px;border-top: 0px; border-left: 0px; border-right: 0px;">
+                            <tr>
+                                <td>Permanent</td>
+                                <td>Residential</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <textarea name="permanent" rows="5" cols="25"></textarea>
+                                </td>
+                                <td>
+                                    <textarea name="residence" rows="5" cols="25"></textarea>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Upload CV</th>
+                    <td>
+                        <input type="file" name="cv">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="reset" value="Reset" style="background-color: red; border-radius: 20%;">
+                    </th>
+                    <th>
+                        <input type="submit" value="Submit" style="background-color: green; border-radius: 20%;">
+                    </th>
+                </tr>
+            </table>
+        </form>
+        <script>
+            function validateform()
+            {
+                var name = document.form.name.value;
+                var email = document.form.email.value;
+                var home = document.form.home.value;
+                var office = document.form.office.value;
+                var permanent = document.form.permanent.value;
+                var residence = document.form.residence.value;
+                var pass = document.form.pass.value;
+                var re_pass = document.form.re_pass.value;
+                var re = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+                var ren = /[0-9!@#$%^&*]/
+                var ph = /^[0-9]+$/;
+                var ad = /^[0-9a-zA-Z\s,.#-]+$/
+                var qw = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (name == "") 
+                {
+                    alert("Enter First Name !!");
+                    document.form.name.focus();
+                    return false;
+                }
+                else if(ren.test(name))
+                {
+                    alert("Enter Valid Name !!");
+                    document.form.name.focus();
+                    return false;
+                }
+                if (pass =='')
+                {
+                    alert("Enter minimum 8 digit Password !!" + '\n' + "Atleast one Lowercase & uppercase & digti & special charecter must be included");
+                    document.form.pass.focus();
+                    return false;
+                }
+                if (!re.test(pass))
+                {
+                    alert("Enter minimum 8 digit Password !!" + '\n' + "Atleast one Lowercase & uppercase & digti & special charecter must be included");
+                    document.form.pass.focus();
+                    return false;
+                }
+                if (re_pass=='' || (!re.test(re_pass)))
+                {
+                    alert("Confirm your password");
+                    document.form.re_pass.focus();
+                    return false;
+                }
+                if (pass!=re_pass)
+                {
+                    alert("Password mismatch");
+                    document.form.re_pass.focus();
+                    return false;
+                }
+                if (email=='')
+                {
+                    alert("Please enter valid email id");
+                    document.form.email.focus();
+                    return false;
+                }
+                if (!qw.test(email))
+                {
+                    alert("Please enter valid email id");
+                    document.form.email.focus();
+                    return false;
+                }
+                if (home=='')
+                {
+                    alert("Please enter valid number");
+                    document.form.home.focus();
+                    return false;
+                }
+                if (!ph.test(home))
+                {
+                    alert("Please enter valid number");
+                    document.form.home.focus();
+                    return false;
+                }
+                if (office=='')
+                {
+                    alert("Please enter valid number");
+                    document.form.office.focus();
+                    return false;
+                }
+                if (!ph.test(office))
+                {
+                    alert("Please enter valid number");
+                    document.form.office.focus();
+                    return false;
+                }
+                if (home==office)
+                {
+                    alert("Home and office number cannot be same");
+                    document.form.office.focus();
+                    return false;
+                }
+                if (permanent=='')
+                {
+                    alert("Please enter valid address");
+                    document.form.permanent.focus();
+                    return false;
+                }
+                if (!ad.test(permanent))
+                {
+                    alert("Please enter valid address");
+                    document.form.permanent.focus();
+                    return false;
+                }
+                if (residence=='')
+                {
+                    alert("Please enter valid address");
+                    document.form.residence.focus();
+                    return false;
+                }
+                if (!ad.test(residence))
+                {
+                    alert("Please enter valid address");
+                    document.form.residence.focus();
+                    return false;
+                }
+            }
+        </script>
+    </body>
+</html>
