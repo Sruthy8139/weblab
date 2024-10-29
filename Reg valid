@@ -1,0 +1,405 @@
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registration</title>
+
+    <style>
+
+        body {
+
+            background-color: silver;
+
+        }
+
+        table, th, td {
+
+            background-color: grey;
+
+            border: 2px solid black;
+
+            border-collapse: collapse;
+
+        }
+
+        hr {
+
+            border: 1px solid black;
+
+        }
+
+        marquee {
+
+            background-color: yellow;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+<center>
+
+    <marquee width="50%">
+
+        <h1 style="color:red">WELCOME TO FRESHERS WORLD!!!</h1>
+
+    </marquee>
+
+    <table border="1" width="50%" cellpadding="4" cellspacing="4">
+
+        <tr>
+
+            <th colspan="3"><h3><b>REGISTRATION FORM</b></h3></th>
+
+        </tr>
+
+        <form name="registrationForm" onsubmit="return validateRegistrationForm()">
+
+            <tr>
+
+                <td><label>NAME</label></td>
+
+                <td colspan="3"><input type="text" name="name"></td>
+
+            </tr>
+
+            <tr>
+
+                <td><label>AGE</label></td>
+
+                <td colspan="3">
+
+                    <select name="age">
+
+                        <option value="">select</option>
+
+                        <option value="1">option1</option>
+
+                        <option value="2">option2</option>
+
+                    </select>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td><label>PASSWORD</label></td>
+
+                <td colspan="3"><input type="password" name="password"></td>
+
+            </tr>
+
+            <tr>
+
+                <td><label>RETYPE PASSWORD</label></td>
+
+                <td colspan="3"><input type="password" name="retypePassword"></td>
+
+            </tr>
+
+            <tr>
+
+                <td rowspan="4">SELECT YOUR SECURITY QUESTION</td>
+
+                <td colspan="2">
+
+                    <input type="radio" name="securityQuestion" value="petName">What is your pet name?
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td colspan="2">
+
+                    <input type="radio" name="securityQuestion" value="bestFriend">Who is your best friend?
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td colspan="2">
+
+                    <input type="radio" name="securityQuestion" value="favoriteColor">What is your favourite color?
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td colspan="2">
+
+                    <input type="radio" name="securityQuestion" value="favoriteTeacher">Who is your favourite teacher?
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td><label>ANSWER OF SECURITY QUESTION</label></td>
+
+                <td colspan="3"><input type="text" name="securityAnswer"></td>
+
+            </tr>
+
+            <tr>
+
+                <td><label>EMAIL ID</label></td>
+
+                <td colspan="3"><input type="email" name="email"></td>
+
+            </tr>
+
+            <tr>
+
+                <td rowspan="2">ADDRESS</td>
+
+                <td>PERMANENT ADDRESS</td>
+
+                <td>TEMPORARY ADDRESS</td>
+
+            </tr>
+
+            <tr>
+
+                <td><textarea wrap="virtual" name="permanentAddress"></textarea></td>
+
+                <td><textarea wrap="virtual" name="temporaryAddress"></textarea></td>
+
+            </tr>
+
+            <tr>
+
+                <td><label>LANGUAGE KNOWN</label></td>
+
+                <td colspan="3"><input type="checkbox" name="lang" value="MALAYALAM">MALAYALAM
+
+                    <input type="checkbox" name="lang" value="ENGLISH">ENGLISH
+
+                    <input type="checkbox" name="lang" value="HINDI">HINDI
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td rowspan="2">PHONE NUMBER</td>
+
+                <td>HOME</td>
+
+                <td>OFFICE</td>
+
+            </tr>
+
+            <tr>
+
+                <td><input type="text" name="homePhone"></td>
+
+                <td><input type="text" name="officePhone"></td>
+
+            </tr>
+
+            <tr>
+
+                <td><label>UPLOAD CV</label></td>
+
+                <td colspan="3"><input type="file" name="file"></td>
+
+            </tr>
+
+            <tr>
+
+                <td align="center"><input type="reset" name="reset"></td>
+
+                <td align="center" colspan="3"><input type="submit" name="submit"></td>
+
+            </tr>
+
+        </form>
+
+    </table>
+
+</center>
+
+
+
+<script>
+
+    function validateRegistrationForm() {
+
+        const form = document.registrationForm;
+
+        const name = form.name.value;
+
+        const password = form.password.value;
+
+        const retypePassword = form.retypePassword.value;
+
+        const securityAnswer = form.securityAnswer.value;
+
+        const email = form.email.value;
+
+        const age = form.age.value;
+
+        const homePhone = form.homePhone.value;
+
+        const officePhone = form.officePhone.value;
+
+
+
+        // Name validation
+
+        const nameRegex = /^[a-zA-Z\s]+$/;
+
+        if (!name) {
+
+            alert("Enter your name!");
+
+            form.name.focus();
+
+            return false;
+
+        } else if (!nameRegex.test(name)) {
+
+            alert("Name must contain only alphabetic characters and spaces!");
+
+            form.name.focus();
+
+            return false;
+
+        }
+
+
+
+        // Age validation
+
+        if (age === "") {
+
+            alert("Select your age!");
+
+            form.age.focus();
+
+            return false;
+
+        }
+
+
+
+        // Password validation
+
+        if (!password) {
+
+            alert("Enter your password!");
+
+            form.password.focus();
+
+            return false;
+
+        }
+
+
+
+        // Retype Password validation
+
+        if (password !== retypePassword) {
+
+            alert("Passwords do not match!");
+
+            form.retypePassword.focus();
+
+            return false;
+
+        }
+
+
+
+        // Security Question Answer validation
+
+        if (!securityAnswer) {
+
+            alert("Provide an answer to the security question!");
+
+            form.securityAnswer.focus();
+
+            return false;
+
+        }
+
+
+
+        // Email validation
+
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (!email) {
+
+            alert("Enter your email!");
+
+            form.email.focus();
+
+            return false;
+
+        } else if (!emailRegex.test(email)) {
+
+            alert("Enter a valid email address!");
+
+            form.email.focus();
+
+            return false;
+
+        }
+
+
+
+        // Phone number validation (if provided)
+
+        if (homePhone && isNaN(homePhone)) {
+
+            alert("Home phone number must be numeric!");
+
+            form.homePhone.focus();
+
+            return false;
+
+        }
+
+        if (officePhone && isNaN(officePhone)) {
+
+            alert("Office phone number must be numeric!");
+
+            form.officePhone.focus();
+
+            return false;
+
+        }
+
+
+
+        return true; // If all validations pass
+
+    }
+
+</script>
+
+
+
+</body>
+
+</html>
